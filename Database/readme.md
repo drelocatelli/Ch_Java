@@ -1,16 +1,13 @@
 # Connect.java
 
 ```
-package Database;
+package database;
 
-import java.io.FileInputStream;
-import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.Properties;
 
 public class Connect {
 
@@ -32,7 +29,7 @@ public class Connect {
 				conn = DriverManager.getConnection(url, dbUser, dbPass);
 			}
 			catch (SQLException e) {
-				throw new DbException(e.getMessage());
+				
 			}
 		}
 		return conn;
@@ -43,19 +40,8 @@ public class Connect {
 			try {
 				conn.close();
 			} catch (SQLException e) {
-				throw new DbException(e.getMessage());
+				
 			}
-		}
-	}
-	
-	private static Properties loadProperties() {
-		try (FileInputStream fs = new FileInputStream("db.properties")) {
-			Properties props = new Properties();
-			props.load(fs);
-			return props;
-		}
-		catch (IOException e) {
-			throw new DbException(e.getMessage());
 		}
 	}
 	
@@ -64,7 +50,7 @@ public class Connect {
 			try {
 				st.close();
 			} catch (SQLException e) {
-				throw new DbException(e.getMessage());
+				
 			}
 		}
 	}
@@ -74,7 +60,7 @@ public class Connect {
 			try {
 				rs.close();
 			} catch (SQLException e) {
-				throw new DbException(e.getMessage());
+				
 			}
 		}
 	}
